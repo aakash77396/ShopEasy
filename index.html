@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <title>Shop Easy</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* background-color: green; */
+        }
+
+        nav {
+            padding: 10px 90px;
+            height: 10%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #FEFEFE;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .nav-title {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+        }
+
+        .nav-title .bi-cart3 {
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .nav-title span {
+            color: #E75E6B;
+        }
+
+        .nav-list ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+            padding: 10px 20px;
+        }
+
+        .nav-list ul li {
+            padding: 10px 0px;
+        }
+
+        .nav-list ul li:first-child {
+            color: #E75E6B;
+            border-bottom: 1px solid #E75E6B;
+        }
+
+        .nav-icons-box {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+            padding: 10px 20px;
+        }
+
+        .nav-icons-box .bi {
+            font-weight: bold;
+            font-size: 25px;
+
+        }
+
+        .nav-icons-box-icon {
+            position: relative;
+
+        }
+
+        .nav-icons-box-icon .count {
+            position: absolute;
+            background-color: #E75E6B;
+            padding: 10px;
+            top: -10px;
+            right: -10px;
+            border-radius: 100%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        header {
+            /* margin: 0px 5px; */
+        }
+
+        header .hero-banner {
+            position: relative;
+            width: 100vw;
+            height: 400px;
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 0px 15px;
+        }
+
+        .hero-img {
+            width: 100%;
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 50px;
+            left: 100px;
+            padding: 30px;
+        }
+
+        .hero-text .new-collection {
+            letter-spacing: 5px;
+            color: rgb(70, 70, 70);
+        }
+
+        .hero-text h1 {
+            font-size: 55px;
+        }
+
+        .hero-text .sub-discription {
+            color: rgb(70, 70, 70);
+            padding-top: 10px;
+            padding-bottom: 15px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .hero-text .shop-now {
+            background-color: #E75E6B;
+            padding: 10px 25px;
+            width: 150px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .hero-text .disc-circle {
+            padding-top: 25px;
+            padding-bottom: 15px;
+            font-size: 10px;
+        }
+
+        .bi-circle-fill {
+            margin-right: 10px;
+            color: rgba(128, 127, 127, 0.725);
+        }
+
+        .hero-text .disc-circle span:first-child {
+            color: #E75E6B;
+        }
+
+        header .facilities {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 100px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #F9F9F9;
+        }
+
+        header .facilities-list {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+
+        .bi-truck,
+        .bi-shield-check,
+        .bi-headset,
+        .bi-arrow-counterclockwise {
+            font-size: 40px;
+            padding-top: 5px;
+        }
+
+        header .facilities-list-discription {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+        }
+
+        header .facilities-list-discription span {
+            padding-top: 5px;
+        }
+
+        header .facilities-list-discription .subtitle {
+            color: rgb(70, 70, 70);
+            font-size: 15px;
+        }
+
+        main section .feactured-products {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 25px 100px;
+        }
+
+        main .feactured-head {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        main .feactured-head span {
+            color: #E75E6B;
+        }
+
+        main .feactured-head .bi-arrow-right {
+            margin-left: 10px;
+        }
+
+        main .feactured-cards {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        main .feactured-body {
+            width: 200px;
+            height: 320px;
+            margin-top: 15px;
+            border: 1px solid rgba(128, 128, 128, 0.267);
+            border-radius: 10px;
+            position: relative;
+        }
+
+        main .feactured-body img {
+            width: 100%;
+            background-color: #F4F4F4;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            height: 180px;
+        }
+
+        main .feactured-body .bi-heart {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        main .feactured-discription {
+            padding: 5px 10px;
+        }
+
+        main .feactured-discription h5 {
+            padding: 2px 0px;
+        }
+
+        main .feactured-discription p {
+            padding: 2px 0px;
+            color: rgb(70, 70, 70);
+            font-size: 13px;
+        }
+
+        main .feactured-discription p .bi {
+            color: rgb(249, 212, 4);
+        }
+
+        main .feactured-discription h3 {
+            padding: 2px 0px;
+        }
+
+        main .feactured-discription div {
+            padding: 10px 0px;
+            background-color: #E75E6B;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            margin-top: 10px;
+        }
+
+        main .feactured-discription .bi-cart3 {
+            margin-right: 10px;
+        }
+
+        .collection {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 98%;
+            margin: 0px auto;
+        }
+
+        .collection-card {
+            width: 500px;
+            height: 250px;
+            position: relative;
+            border-radius: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-right: 15px;
+        }
+
+        .collection-card img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        .collection-text {
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            padding: 20px 30px;
+        }
+
+        .collection-text p {
+            padding: 10px 0px;
+            color: rgb(34, 33, 33);
+        }
+
+        .collection-text div {
+            border: 1px solid black;
+            border-radius: 7px;
+            padding: 5px 10px;
+            width: 100px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .stay-updated {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 80px;
+        }
+
+        .stay-updated .left-part {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 40px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .left-part .bi-envelope {
+            font-size: 55px;
+        }
+
+        .left-part .text p {
+            padding: 2px 0px;
+        }
+
+        .right-part {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .right-part .enter-email {
+            width: 350px;
+            padding: 20px 15px;
+            border: 1px solid rgba(128, 128, 128, 0.318);
+            border-radius: 5px;
+            margin-right: 10px;
+            color: rgb(100, 99, 99);
+        }
+
+        .right-part .subscribe {
+            width: 150px;
+            padding: 20px 15px;
+            border: 1px solid rgba(128, 128, 128, 0.318);
+            border-radius: 5px;
+            background-color: #E75E6B;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #192635;
+            height: 300px;
+            width: 98%;
+            padding: 15px 10px;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0px auto;
+            border-radius: 5px;
+        }
+
+        .footer-body {
+            padding: 20px 100px;
+            display: grid;
+            grid-template-columns: 3.5fr 2.5fr 2.5fr 2.5fr;
+            border-bottom: 2px solid #eff5f658 ;
+        }
+
+        .footer-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-title {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            padding-bottom: 20px;
+        }
+
+        .footer-title .bi-cart3 {
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .footer-title span {
+            color: #E75E6B;
+        }
+
+        .footer-list .footer-title-discription {
+            color: #eff5f6cd;
+            line-height: 20px;
+            padding-bottom: 25px;
+        }
+
+        .footer-list .social-media-links {
+            display: flex;
+            flex-direction: row;
+            gap: 25px;
+            font-size: 30px;
+            color: #eff5f6cd;
+
+        }
+
+        .footer-list h2 {
+            padding-bottom: 20px;
+            color: #eff5f6cd;
+        }
+
+        .footer-list ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            color: #eff5f6cd;
+        }
+
+        .footer-list ul li {
+            padding-top: 10px;
+        }
+
+        .footer-list .address .bi {
+            padding-right: 10px;
+        }
+
+        .footer-list .address li {
+            padding-bottom: 10px;
+        }
+        .footer-location{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .footer-location p{
+            line-height: 20px;
+        }
+        .copyright{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 0px;
+            color: #eff5f6cd;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-title">
+            <span class="bi bi-cart3"></span>
+            <h1>Shop<span>Easy</span></h1>
+        </div>
+        <div class="nav-list">
+            <ul>
+                <li>Home</li>
+                <li>Shop</li>
+                <li>Categories</li>
+                <li>About</li>
+                <li>Contact</li>
+            </ul>
+        </div>
+        <div class="nav-icons-box">
+            <div class="nav-icons-box-icon"><span class="bi bi-search"></span></div>
+            <div class="nav-icons-box-icon">
+                <span class="bi bi-heart"></span>
+                <span class="count">0</span>
+            </div>
+            <div class="nav-icons-box-icon">
+                <span class="bi bi-cart3"></span>
+                <span class="count">0</span>
+            </div>
+        </div>
+    </nav>
+    <header>
+        <div class="hero-banner">
+            <img class="hero-img" src="./public/img/banner.jpg" alt="">
+            <div class="hero-text">
+                <p class="new-collection">NEW COLECTION</p>
+                <h1>Fashion For <br> A Better You</h1>
+                <p class="sub-discription">Trends styles, everyday comfort. Discover your <br>new favourites.</p>
+                <div class="shop-now">Shop Now <span class="bi bi-arrow-right"></span></div>
+                <div class="disc-circle">
+                    <span class="bi bi-circle-fill"></span>
+                    <span class="bi bi-circle-fill"></span>
+                    <span class="bi bi-circle-fill"></span>
+                </div>
+            </div>
+        </div>
+        <div class="facilities">
+            <div class="facilities-list">
+                <div><span class="bi bi-truck"></span></div>
+                <div class="facilities-list-discription">
+                    <span>
+                        <h4>Free Shipping</h4>
+                    </span>
+                    <span class="subtitle">On orders over $50</span>
+                </div>
+            </div>
+            <div class="facilities-list">
+                <div><span class="bi bi-shield-check"></span></div>
+                <div class="facilities-list-discription">
+                    <span>
+                        <h4>Secure Payment</h4>
+                    </span>
+                    <span class="subtitle">100% safe & secure</span>
+                </div>
+            </div>
+            <div class="facilities-list">
+                <div><span class="bi bi-headset"></span></div>
+                <div class="facilities-list-discription">
+                    <span>
+                        <h4>24/7 Support</h4>
+                    </span>
+                    <span class="subtitle">We're here to help</span>
+                </div>
+            </div>
+            <div class="facilities-list">
+                <div><span class="bi bi-arrow-counterclockwise"></span></div>
+                <div class="facilities-list-discription">
+                    <span>
+                        <h4>Easy Returns</h4>
+                    </span>
+                    <span class="subtitle">Hassle free returns</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="feactured-products">
+                <div class="feactured-head">
+                    <h2>Featured Products</h2>
+                    <span>View All <span class="bi bi-arrow-right"></span></span>
+                </div>
+                <div class="feactured-cards">
+                    <div class="feactured-body">
+                        <img src="./public/img/sneaker.jpg" alt="">
+                        <span class="bi bi-heart"></span>
+                        <div class="feactured-discription">
+                            <h5>Casual Sneakers</h5>
+                            <p><span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span>(120)</span>
+                            </p>
+                            <h3>$49.99</h3>
+                            <div> <span class="bi bi-cart3"></span>Add to Cart</div>
+                        </div>
+                    </div>
+                    <div class="feactured-body">
+                        <img src="./public/img/watch.jpg" alt="">
+                        <span class="bi bi-heart"></span>
+                        <div class="feactured-discription">
+                            <h5>Smart Watch</h5>
+                            <p><span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span>(98)</span>
+                            </p>
+                            <h3>$69.99</h3>
+                            <div> <span class="bi bi-cart3"></span>Add to Cart</div>
+                        </div>
+                    </div>
+                    <div class="feactured-body">
+                        <img src="./public/img/pink-handbags.jpg" alt="">
+                        <span class="bi bi-heart"></span>
+                        <div class="feactured-discription">
+                            <h5>Stylish Handbag</h5>
+                            <p><span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span>(56)</span>
+                            </p>
+                            <h3>$78.99</h3>
+                            <div> <span class="bi bi-cart3"></span>Add to Cart</div>
+                        </div>
+                    </div>
+                    <div class="feactured-body">
+                        <img src="./public/img/sunglasses.jpg" alt="">
+                        <span class="bi bi-heart"></span>
+                        <div class="feactured-discription">
+                            <h5>Trendy Sunglasses</h5>
+                            <p><span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span>(210)</span>
+                            </p>
+                            <h3>$102.99</h3>
+                            <div> <span class="bi bi-cart3"></span>Add to Cart</div>
+                        </div>
+                    </div>
+                    <div class="feactured-body">
+                        <img src="./public/img/iphone2.jpg" alt="">
+                        <span class="bi bi-heart"></span>
+                        <div class="feactured-discription">
+                            <h5>Latest Iphones</h5>
+                            <p><span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span class="bi bi-star-fill"></span>
+                                <span>(240)</span>
+                            </p>
+                            <h3>$258.99</h3>
+                            <div> <span class="bi bi-cart3"></span>Add to Cart</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="collection">
+        <div class="collection-card">
+            <img src="./public/img/man-collections.jpg" alt="">
+            <div class="collection-text">
+                <h2>Men's <br> Collection</h2>
+                <p>Style for every occation</p>
+                <div>Shop Now</div>
+            </div>
+        </div>
+        <div class="collection-card">
+            <img src="./public/img/girls-collections.jpg" alt="">
+            <div class="collection-text">
+                <h2>Men's <br> Collection</h2>
+                <p>Style for every occation</p>
+                <div>Shop Now</div>
+            </div>
+        </div>
+        <div class="collection-card">
+            <img src="./public/img/electronic-collections.jpg" alt="">
+            <div class="collection-text">
+                <h2>Men's <br> Collection</h2>
+                <p>Style for every occation</p>
+                <div>Shop Now</div>
+            </div>
+        </div>
+
+    </section>
+
+    <article class="stay-updated">
+        <div class="left-part">
+            <div><span class="bi bi-envelope"></span></div>
+            <div class="text">
+                <h1>Stay Updated</h1>
+                <p>Subscribe to our newsletter for latest offers and updates.</p>
+            </div>
+        </div>
+        <div class="right-part">
+            <p class="enter-email">Enter your email</p>
+            <p class="subscribe">Subscribe</p>
+        </div>
+    </article>
+
+    <footer>
+        <div class="footer-body">
+            <div class="footer-list">
+                <div class="footer-title">
+                    <span class="bi bi-cart3"></span>
+                    <h1>Shop<span>Easy</span></h1>
+                </div>
+                <p class="footer-title-discription">Your one-stop shop for fashion, electronics <br> and more. Quality
+                    products, great prices</p>
+                <div class="social-media-links">
+                    <span class="bi bi-facebook"></span>
+                    <span class="bi bi-instagram"></span>
+                    <span class="bi bi-twitter"></span>
+                    <span class="bi bi-youtube"></span>
+                </div>
+            </div>
+            <div class="footer-list">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li>Home</li>
+                    <li>Shop</li>
+                    <li>Categories</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+            <div class="footer-list">
+                <h2>Customer Service</h2>
+                <ul>
+                    <li>FAQs</li>
+                    <li>Shipping Policy</li>
+                    <li>Returns & Refunds</li>
+                    <li>Privacy Policy</li>
+                    <li>Terms & Conditions</li>
+                </ul>
+            </div>
+            <div class="footer-list">
+                <h2>Contact Us</h2>
+                <ul class="address">
+                    <li class="footer-location">
+                        <span class="bi bi-geo-alt-fill"></span>
+                        <div>
+                            <p>123 Shopping Street,</p>
+                            <p>New York ,NY 10001</p>
+                        </div>
+                    </li>
+                    <li><span class="bi bi-telephone-fill"></span>+1 234 567 890</li>
+                    <li><span class="bi bi-envelope"></span> support@shopeasy.com</li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">@ 2026 ShopEasy. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
