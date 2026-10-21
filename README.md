@@ -46,7 +46,7 @@ ShopEasy/
 1. Clone the repository:
 
    ```bash
-   git clone <your-repository-url>
+   git clone https://github.com/aakash77396/ShopEasy
    ```
 
 2. Open the project folder:
